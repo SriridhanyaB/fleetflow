@@ -1,32 +1,22 @@
 package com.fleetflow.service;
 
-import com.fleetflow.model.Vehicle;
-import com.fleetflow.repository.VehicleRepository;
+import com.fleetflow.entity.FleetflowVehicle;
+import com.fleetflow.repository.FleetflowVehicleRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class VehicleService {
 
-    private final VehicleRepository repository;
+    private final FleetflowVehicleRepository repository;
 
-    public VehicleService(VehicleRepository repository) {
-        this.repository = repository;
-    }
-
-    public Vehicle save(Vehicle vehicle) {
-        return repository.save(vehicle);
-    }
-
-    public List<Vehicle> getAll() {
+    public List<FleetflowVehicle> getAll() {
         return repository.findAll();
     }
 
-    public Vehicle getById(Long id) {
-        return repository.findById(id).orElseThrow();
-    }
-
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public FleetflowVehicle save(FleetflowVehicle vehicle) {
+        return repository.save(vehicle);
     }
 }
